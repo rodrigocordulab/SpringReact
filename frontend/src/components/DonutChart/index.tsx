@@ -1,37 +1,23 @@
 import Chart from "react-apexcharts";
 
 function DonutChart() {
-  const options = {
-    plotOptions: {
-        bar: {
-            horizontal: true,
-        }
-    },
-};
+  const mockData = {
+    series: [477138, 499928, 444867, 220426, 473088],
+    labels: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
+  }
 
-const mockData = {
-    labels: {
-        categories: ['Anakin', 'Barry Allen', 'Kal-El', 'Logan', 'Padmé']
-    },
-    series: [
-        {
-            name: "% Sucesso",
-            data: [43.6, 67.1, 67.7, 45.6, 71.1]                   
-        }
-    ]
-};
+  const options = {
+    legend: {
+      show: true
+    }
+  }
   return (
-    <div className="app">
-        <div className="row">
-          <div className="mixed-chart">
-            <Chart
-              options={options}
-              type="bar"
-              width="500"
-            />
-          </div>
-        </div>
-      </div>
+    <Chart
+      options={{ ...options, labels: mockData.labels }}
+      series={mockData.series}
+      type="donut"
+      height="240"
+    />
   );
 }
 
